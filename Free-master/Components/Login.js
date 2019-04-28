@@ -7,9 +7,11 @@ import {
     TextInput,
     View,
     Button,
-    Alert
+    Alert,
+    Image
 } from 'react-native';
 import { Facebook, Constants } from 'expo';
+import { LinearGradient } from 'expo';
 
 export default class Login extends Component {
 
@@ -165,36 +167,36 @@ export default class Login extends Component {
       );
 
     render(){
-        return (         
-            <ScrollView style={styles.scroll}>
-                <Text style={styles.login}>
-                    Free
-                </Text>
-                <Text style={styles.slogan}>
-                    Solo diversión
-                </Text>
-                <View style={{margin:7}} />
-            
-                <TouchableOpacity
-                        style={styles.botonIniciar}
-                        onPress={() => this.props.navigation.navigate('LogIn1')}
-                        underlayColor='#fff'>
-                        <Text style={styles.loginText}>Iniciar Sesión</Text>
-                </TouchableOpacity>
-            
-                <TouchableOpacity
-                        style={styles.botonIniciar}
-                        onPress={() => this.props.navigation.navigate('Registro1')}
-                        underlayColor='#fff'>
-                        <Text style={styles.loginText}>Registrarse</Text>
-                </TouchableOpacity>
-             {this.state.responseJSON &&
-            this.renderValue('User data : ' + this.state.responseJSON)}
-
-            
-            {this.renderButton()}
-
-            </ScrollView>
+        return (    
+              <ScrollView >
+              <LinearGradient
+                colors={['#f5f6fc','#8972da']}
+                style={styles.back}>  
+                  <Image 
+                      style={{ height: 200, width: 200, position: 'absolute', top:0, left:70, marginBottom: 100 }} 
+                      source = {require('./../assets/konfio.png')} />
+                  <Text style={styles.login}>
+                      CrediBit
+                  </Text>
+                  <View style={{margin:7}} />
+              
+                  <TouchableOpacity
+                          style={styles.botonIniciar}
+                          onPress={() => this.props.navigation.navigate('LogIn1')}
+                          underlayColor='#fff'>
+                          <Text style={styles.loginText}>Iniciar Sesión</Text>
+                  </TouchableOpacity>
+              
+                  <TouchableOpacity
+                          style={styles.botonIniciar}
+                          onPress={() => this.props.navigation.navigate('Registro1')}
+                          underlayColor='#fff'>
+                          <Text style={styles.loginText}>Solicitar Credito</Text>
+                  </TouchableOpacity>
+              {this.state.responseJSON &&
+              this.renderValue('User data : ' + this.state.responseJSON)}
+              </LinearGradient> 
+              </ScrollView>  
         )
     }
 }
@@ -203,7 +205,7 @@ const styles = StyleSheet.create({
     login:{
         textAlign: 'center',
         fontSize: 27,
-        marginTop: 120,
+        marginTop: 170,
         paddingBottom: 80,
         color:'#FFFFFF'
     },
@@ -211,6 +213,10 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         fontSize:18,
         color:'#FFFFFF'
+    },
+    back:{
+      padding: 20,  
+      height: 650
     },
     botonRegistrar:{
         marginRight:18,
@@ -236,7 +242,7 @@ const styles = StyleSheet.create({
         borderColor: '#FFFFFF'
       },
       loginText:{
-          color:'#000000',
+          color:'#8972da',
           textAlign:'center',
           paddingLeft : 10,
           paddingRight : 10
@@ -244,17 +250,13 @@ const styles = StyleSheet.create({
         botonIniciar:{
         marginRight:18,
         marginLeft:18,
-       marginTop:30,
+        marginTop:30,
         paddingTop:10,
         paddingBottom:10,
         backgroundColor:'#FFFFFF',
         borderRadius:10,
         borderWidth: 1,
         borderColor: '#FFFFFF'
-      },
-      scroll:{
-          padding:20,
-          backgroundColor: '#ffcccc'
       },
       container: {
         flex: 1,
