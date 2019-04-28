@@ -60,7 +60,7 @@ export default class Login1 extends Component {
         return (         
             <ScrollView style={styles.scroll}>
                 <Text style={styles.login}>
-                    Free
+                    CrediBit
                 </Text>
 
                 <Text style={[styles.tipoInput, styles.emailPadding]}>
@@ -80,6 +80,7 @@ export default class Login1 extends Component {
                 <TextInput  
                     style={styles.inputs}
                     placeholder="* * * * * * * *"
+                    secureTextEntry={true}
                     onChangeText={(password) => this.setState({password})}
                 />
 
@@ -87,23 +88,11 @@ export default class Login1 extends Component {
                     {this.state.error}
                 </Text>
 
-                <Text style={styles.forgotPassword}>
-                    ¿Olvidaste tu contraseña?
-                </Text>
-
                 <TouchableOpacity
                         style={styles.botonIniciar}
                         onPress={this.iniciarSesion}
                         underlayColor='#fff'>
                         <Text style={styles.loginText}>Iniciar Sesión</Text>
-                </TouchableOpacity>
-
-
-                <TouchableOpacity
-                        style={styles.botonIniciar}
-                        onPress={() => this.props.navigation.navigate('Registro1')}
-                        underlayColor='#fff'>
-                        <Text style={styles.loginText}>Registrarse</Text>
                 </TouchableOpacity>
 
                 </ScrollView>
@@ -119,7 +108,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         fontSize: 27,
         marginTop: 50,
-        color:'#ff8080'
+        color:'#8972da'
     },
     slogan:{
         textAlign: 'center',
@@ -133,7 +122,7 @@ const styles = StyleSheet.create({
           paddingRight : 10
       },
       tipoInput:{
-        color:'#ff8080',
+        color:'#8972da',
         fontSize: 20
       },
       inputs:{
@@ -141,7 +130,8 @@ const styles = StyleSheet.create({
           paddingBottom: 10
       },
       emailPadding:{
-        paddingTop: 90
+        paddingTop: 90,
+        color: '#8972da'
       },
       forgotPassword:{
         textAlign:'right',
@@ -154,7 +144,7 @@ const styles = StyleSheet.create({
        marginTop:50,
         paddingTop:10,
         paddingBottom:10,
-        backgroundColor:'#ff4d4d',
+        backgroundColor:'#8972da',
         borderRadius:10,
         borderWidth: 1,
         borderColor: '#FFFFFF'
