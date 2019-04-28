@@ -23,35 +23,33 @@ export default class Login1 extends Component {
       }
 
     iniciarSesion(){
-        fetch("http://10.43.103.69:8080/login",
+        console.log("HERE");
+        fetch("http://gotaroja.com:5000/login",
         {
           method: 'POST',
           headers: {
             Accept: 'application/json',
-            'Content-Type': 'multipart/form-data',
+            'Content-Type': 'application/json',
           },
           body: JSON.stringify({
-            email: this.state.email,
+            username: this.state.email,
             password: this.state.password,
         })
       })
           .then((response) => {
-              response.json()
-              response = JSON.parse(response["_bodyText"])
+              
+              response = response["_bodyText"];
+              console.log(response);
               this.setState({
-                  userId: response["userId"],
-                  load: response["success"],
+                  load: response,
                   error: "",
               });
-              global.user = this.state.userId;
-              if (this.state.load === "True") {
-                console.log(this.state.userId);
-                console.log(this.state.load);
-                this.props.navigation.navigate('Perfil', { userID: this.state.userId });
+              if (this.state.load === "Successful") {
+                this.props.navigation.navigate('Perfil');
               } 
-              if (this.state.load === "False") {
+              else {
                 this.setState({
-                    error: "username or password incorrect",
+                    error: "Username or Password Incorrect",
                 });
               } 
             })
@@ -156,6 +154,6 @@ const styles = StyleSheet.create({
       errorEmailPassword: {
         textAlign:'center',
         fontSize: 15,
-        color: '#ff4d4d'
+        color: '#8972da'
       }
 }) 

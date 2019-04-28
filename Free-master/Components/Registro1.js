@@ -15,10 +15,10 @@ export default class Registro1 extends Component {
         super(props);
         this.state = { 
             name: "",
-            surname: "",
+            url: "",
             email: "",
-            password: "",
-            confirmPassword: "",
+            buro: "",
+            sat: "",
             error: ""
         }
         this.checkPassword = this.checkPassword.bind(this);
@@ -30,25 +30,22 @@ export default class Registro1 extends Component {
         this.state.password === "" ||
         this.state.confirmPassword === ""){
             this.setState({
-                error: "Please fill all the inputs"
+                error: "Please fill all the Inputs"
             });
         } else {
-            if (this.state.password === this.state.confirmPassword){
                 this.setState({
                     error: ""
                 })
                 this.props.navigation.navigate('Registro2', 
                 { 
-                    name: this.state.name,
-                    surname: this.state.surname,
-                    email: this.state.email, 
-                    password: this.state.password,
+                    nombreEmpresa: this.state.name,
+                    companySite: this.state.url,
+                    correo: this.state.email, 
+                    puntosBuro: this.state.buro,
+                    puntosSat: this.state.sat,
                 })
-            } else {
-                this.setState({
-                    error: "Please check the passwords are the same"
-                });
-            }
+
+            
         }
     }
 
@@ -56,64 +53,60 @@ export default class Registro1 extends Component {
         return (         
             <ScrollView style={styles.scroll}>
                 <Text style={styles.login}>
-                    Free
+                    CrediBit
                 </Text>
 
                 <Text style={[styles.tipoInput, styles.emailPadding]}>
-                    Nombre
+                    Nombre de la Empresa
                 </Text>
 
                 <TextInput  
                     style={styles.inputs}
-                    placeholder="Danniela"
+                    placeholder="Zubut"
                     onChangeText={(name) => this.setState({name})}
                 />
 
                 <Text style={styles.tipoInput}>
-                    Apellido
+                    Url de la Empresa
                 </Text>
 
                 <TextInput  
                     style={styles.inputs}
-                    placeholder="Medina"
-                    onChangeText={(surname) => this.setState({surname})}
+                    placeholder="https://zubut.com"
+                    onChangeText={(url) => this.setState({url})}
                 />
 
                 <Text style={styles.tipoInput}>
-                    Email
+                    Correo
                 </Text>
 
                 <TextInput  
                     style={styles.inputs}
-                    placeholder="correo@example.com"
+                    placeholder="luis@zubut.com"
                     onChangeText={(email) => this.setState({email})}
                 />
 
                 <Text style={styles.tipoInput}>
-                    Contraseña
+                    Puntos Buró
                 </Text>
 
                 <TextInput  
                     style={styles.inputs}
-                    placeholder="* * * * * * * *"
-                    onChangeText={(password) => this.setState({password})}
+                    placeholder="65"
+                    onChangeText={(buro) => this.setState({buro})}
                 />
                <Text style={styles.tipoInput}>
-                    Confirmar Contraseña
+                    Puntos del SAT
                 </Text>
 
                 <TextInput  
                     style={styles.inputs}
-                    placeholder="* * * * * * * *"
-                    onChangeText={(confirmPassword) => this.setState({confirmPassword})}
+                    placeholder="75"
+                    onChangeText={(sat) => this.setState({sat})}
                 />
 
                 <Text style={styles.errorEmailPassword}>
                     {this.state.error}
-                </Text>
-
-                <Text style={styles.forgotPassword}>
-                    ¿Ya tienes una cuenta?
                 </Text>
 
 
@@ -138,7 +131,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         fontSize: 27,
         marginTop: 50,
-        color:'#ff8080'
+        color:'#8972da'
     },
     slogan:{
         textAlign: 'center',
@@ -152,7 +145,7 @@ const styles = StyleSheet.create({
           paddingRight : 10
       },
       tipoInput:{
-        color:'#ff8080',
+        color:'#8972da',
         fontSize: 17
       },
       inputs:{
@@ -173,7 +166,7 @@ const styles = StyleSheet.create({
        marginTop:50,
         paddingTop:10,
         paddingBottom:10,
-        backgroundColor:'#ff4d4d',
+        backgroundColor:'#8972da',
         borderRadius:10,
         borderWidth: 1,
         borderColor: '#FFFFFF'
@@ -185,7 +178,7 @@ const styles = StyleSheet.create({
       errorEmailPassword: {
         textAlign:'center',
         fontSize: 15,
-        color: '#ff4d4d'
+        color: '#8972da'
       }
 
 })
